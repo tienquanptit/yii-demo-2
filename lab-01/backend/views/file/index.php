@@ -11,7 +11,7 @@ $baseUrl = str_replace('/backend/web','', Yii::$app->urlManager->baseUrl);
             <h3 class="panel-title"><?php echo $this->title; ?></h3>
         </div>
         <div class="panel-body">
-            <iframe src="<?php echo $baseUrl; ?>/file/dialog.php" frameborder="0" style="width: :100%; height: 500px; border: none"></iframe>
+            <iframe src="<?php echo $baseUrl; ?>/file/dialog.php" style="width:100%; height: 500px; border: none"></iframe>
         </div>
     </div>
 </div>
