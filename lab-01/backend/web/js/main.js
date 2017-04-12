@@ -15,11 +15,11 @@ $(document).ready(function () {
 
         menubar: false,
         toolbar_items_size: 'small',
-        relative_urls: false,
+        relative_urls: true,
         remove_script_host : false,
-        // filemanager_title:"Media Manager",
-        // external_filemanager_path: homeUrl()+"/file/",
-        // external_plugins: { "filemanager" : homeUrl()+"/file/plugin.min.js"},
+        filemanager_title:"Media Manager",
+        external_filemanager_path: homeUrl()+"/file/",
+        external_plugins: { "filemanager" : homeUrl()+"/file/plugin.min.js"},
         // filemanager_access_key:csrf(),
     });
 
@@ -28,7 +28,6 @@ $(document).ready(function () {
         toolbar_items_size: 'small',
         height: 250,
         width:"",
-        menubar: false,
         plugins: [
             "advlist autolink lists link image charmap print preview hr anchor pagebreak",
             "searchreplace wordcount visualblocks visualchars fullscreen",
@@ -39,11 +38,12 @@ $(document).ready(function () {
         image_advtab: true,
         menubar: false,
         toolbar_items_size: 'small',
-        relative_urls: false,
+
+        relative_urls: true,
         remove_script_host : false,
-        // filemanager_title:"Media Manager",
-        // external_filemanager_path: homeUrl()+"/file/",
-        // external_plugins: { "filemanager" : homeUrl()+"/file/plugin.min.js"},
+        filemanager_title:"Media Manager",
+        external_filemanager_path: homeUrl() + "/file/",
+        external_plugins: { "filemanager" : homeUrl() + "/file/plugin.min.js"},
         // filemanager_access_key:csrf(),
 
     });
