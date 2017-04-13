@@ -118,6 +118,24 @@ AppAsset::register($this);
     </div>
 </footer>
 
+<div class="modal fade" id="modal-media-imge">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Thư viện hình ảnh</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="<?php echo $homeUrl; ?>/file/dialog.php?field_id=image" style="border: none; width: 100%; height: 500px"></iframe>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -48,6 +48,25 @@ $(document).ready(function () {
 
     });
 
+    $('a#select-img').click(function (event) {
+        event.preventDefault();
+        $('#modal-media-imge').modal('show');
+
+        $('#modal-media-imge').on('hide.bs.modal',function (e) {
+            var $imgUrl = $('input#image').val();
+            $('img#show-img').attr('src',$imgUrl);
+            // alert(2323);
+        });
+    });
+
+
+
+    $('a#remove-img').click(function (event) {
+        event.preventDefault();
+        $('input#image').val('');
+        $('img#show-img').attr('src','');
+        });
+
 
     // jQuery(document).ready(function($) {
     // 	$('#show-media').click(function() {

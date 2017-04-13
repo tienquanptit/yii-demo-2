@@ -29,8 +29,18 @@ $cat = new Category;
                     'prompt'=>'Chọn danh mục'
                 ]
             ) ?>
+            <div class="row">
+                <div class="col-md-3">
+                    <?= $form->field($model, 'image')->hiddenInput(['id'=>'image']) ?>
+                    <img src="<?php echo $model->image;?>" id="show-img">
+                    <a href="#" id="select-img" title="Chọn hình ảnh" class="btn btn-info btn-sm">Chọn ảnh</a>
+                    <a href="#" id="remove-img" title="Xóa hình ảnh" class="btn btn-danger btn-sm">Xóa ảnh</a>
+                </div>
+                <div class="col-md-9">
 
-            <?= $form->field($model, 'file')->fileInput() ?>
+                </div>
+            </div>
+
 
             <?= $form->field($model, 'desc')->textarea(['id' => 'desc']) ?>
 

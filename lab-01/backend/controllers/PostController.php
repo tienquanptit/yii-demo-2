@@ -67,17 +67,12 @@ class PostController extends Controller
         $model = new Post();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->file = UploadedFile::getInstance($model,'file');
-            if($model->file){//if isser($_FILES['file'])
-                //code
-//                var_dump($model->file);die;
-                $model->file->saveAs('../../uploads/'.$model->file->name);
-                $model->image = $model->file->name;
 
-            }
+            $model->cate = ($model->cate =='') ? 0 : $model->cate;
+
             $model->created_at = time();
             $model->updated_at = time();
-            if($model->save(false)){
+            if($model->save()){
                 Yii::$app->session->addFlash('success','Thêm mới bài viết thành công');
                 return $this->redirect(['view', 'id' => $model->id]);
             }else{

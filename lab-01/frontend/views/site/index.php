@@ -1,55 +1,50 @@
 <?php
 
 /* @var $this yii\web\View */
-
+use yii\helpers\Html;
+use common\models\Post;
 $this->title = 'My Yii Application';
 ?>
 <!-- Main Content -->
+
+<?php $posts = \common\models\Post::find()->all();
+//    var_dump($posts);
+?>
+
+
+<?php if($posts) : ?>
 <div class="container">
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <?php foreach ($posts as $item) : ?>
             <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Man must explore, and this is exploration at its greatest
-                    </h2>
+
+                <?php echo Html::a($item->name,['/post/view','slug'=>$item->slug], ['class'=>'post-title']);?>
+
+<!--                <a href="post.html">-->
+<!--                    <h2 class="post-title">-->
+<!--                        --><?php //echo $item->name; ?>
+<!--                    </h2>-->
                     <h3 class="post-subtitle">
-                        Problems look mighty small from 150 miles up
+                        <?php echo $item->desc; ?>
                     </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</p>
+<!--                </a>-->
+                <p class="post-meta">Posted by <a href="https://www.facebook.com/quannntien">Quan Tien</a> <?php echo ' on '.date('d-m-Y',$item->created_at);?> </p>
             </div>
             <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        I believe every human has a finite number of heartbeats. I don't intend to waste any of mine.
-                    </h2>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 18, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Science has not yet mastered prophecy
-                    </h2>
-                    <h3 class="post-subtitle">
-                        We predict too much for the next year and yet far too little for the next ten.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</p>
-            </div>
-            <hr>
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">
-                        Failure is not an option
-                    </h2>
-                    <h3 class="post-subtitle">
-                        Many say exploration is part of our destiny, but it’s actually our duty to future generations.
-                    </h3>
-                </a>
-                <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on July 8, 2014</p>
-            </div>
-            <hr>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<hr>
+
