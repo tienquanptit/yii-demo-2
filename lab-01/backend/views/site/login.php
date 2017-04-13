@@ -10,26 +10,43 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+            <?php $form = ActiveForm::begin(); ?>
 
-    <p>Please fill out the following fields to login:</p>
+                <?php echo $form->field($model, 'username')->textInput(['id' => 'username', 'class' => 'login-ic'])->label(false) ?>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                <?php echo $form->field($model, 'password')->passwordInput(['id'=> 'password', 'class' => 'login-ic'])->label(false) ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                <?php echo $form->field($model, 'rememberMe')->checkbox() ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+            <div class="log-bwn">
+                <input type="submit"  value="Log in" >
+            </div>
 
             <?php ActiveForm::end(); ?>
-        </div>
-    </div>
-</div>
+
+
+<!--<div class="login-form">-->
+<!--    <div class="top-login">-->
+<!--        <span><img src="../../../uploads/group.png" alt=""/></span>-->
+<!--    </div>-->
+<!--    <h1>Login</h1>-->
+<!--    <div class="login-top">-->
+<!--        <form>-->
+<!--            <div class="login-ic">-->
+<!--                <i ></i>-->
+<!--                <input type="text"  value="User name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}"/>-->
+<!--                <div class="clear"> </div>-->
+<!--            </div>-->
+<!--            <div class="login-ic">-->
+<!--                <i class="icon"></i>-->
+<!--                <input type="password"  value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}"/>-->
+<!--                <div class="clear"> </div>-->
+<!--            </div>-->
+<!---->
+<!--            <div class="log-bwn">-->
+<!--                <input type="submit"  value="Login" >-->
+<!--            </div>-->
+<!--        </form>-->
+<!--    </div>-->
+<!--    <p class="copy">© 2016 Square Login Form. All rights reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a></p>-->
+<!--</div>-->
