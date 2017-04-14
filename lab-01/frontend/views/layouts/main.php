@@ -25,34 +25,67 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav class="navbar navbar-custom navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                Menu <i class="fa fa-bars"></i>
-            </button>
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
-        </div>
+<!--        <div class="navbar-header page-scroll">-->
+<!--            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
+<!--                <span class="sr-only">Toggle navigation</span>-->
+<!--                Menu <i class="fa fa-bars"></i>-->
+<!--            </button>-->
+<!--        </div>-->
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="index.html">Home</a>
-                </li>
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-                <li>
-                    <a href="post.html">Sample Post</a>
-                </li>
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-            </ul>
-        </div>
+<!--        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--                <li>-->
+<!--                    <a href="index.html">Home</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="about.html">About</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="post.html">Sample Post</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="contact.html">Contact</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+
+        <?php
+        NavBar::begin([
+            'brandLabel' => 'MyBlog',
+            'brandUrl' => Yii::$app->homeUrl,
+            'options' => [
+                'class' => 'collapse navbar-collapse',
+
+            ],
+        ]);
+        $menuItems = [
+            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'About', 'url' => ['/site/about']],
+            ['label' => 'Contact', 'url' => ['/site/contact']],
+        ];
+        if (Yii::$app->user->isGuest) {
+            $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+            $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        } else {
+            $menuItems[] = '<li>'
+                . Html::beginForm(['/site/logout'], 'post')
+                . Html::submitButton(
+                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link logout']
+                )
+                . Html::endForm()
+                . '</li>';
+        }
+        echo Nav::widget([
+            'options' => ['class' => 'navbar-nav navbar-right'],
+            'items' => $menuItems,
+        ]);
+        NavBar::end();
+        ?>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
@@ -107,7 +140,7 @@ AppAsset::register($this);
                         </a>
                     </li>
                 </ul>
-                <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
             </div>
         </div>
     </div>

@@ -11,7 +11,7 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
+<div class="site-contact" style="padding-left: 30%">
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
@@ -19,12 +19,14 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-5" >
             <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-                <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
+                <?= $form->field($model, 'name')->textInput(['class'=>'form-control','placeholder'=>'Name','id'=>'name','required data-validation-required-message'=>'Please enter your name.',
+                ]) ?>
 
-                <?= $form->field($model, 'email') ?>
+                <?= $form->field($model, 'email')->textInput(['class'=>'form-control','placeholder'=>'Email','id'=>'name','required data-validation-required-message'=>'Please enter your email.',
+                ]) ?>
 
                 <?= $form->field($model, 'subject') ?>
 
