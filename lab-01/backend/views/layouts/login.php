@@ -40,7 +40,7 @@ LoginAsset::register($this);
     <div class="top-login">
         <span><img src="../../uploads/group.png" alt=""/></span>
     </div>
-    <h1>Login</h1>
+    <h1>Login Admin</h1>
     <div class="login-top">
             <?php echo Alert::widget() ?>
             <?php echo $content ?>
