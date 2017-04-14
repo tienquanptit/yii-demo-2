@@ -1,53 +1,49 @@
 <?php
 
 /* @var $this yii\web\View */
-
+use yii\helpers\Html;
+use common\models\Post;
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
+<!-- Main Content -->
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<?php $posts = \common\models\Post::find()->all();
+//    var_dump($posts);
+?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+<?php if($posts) : ?>
+<div class="container" style="padding-top: 30px;">
+    <div class="row">
+        <div class="">
+            <?php foreach ($posts as $item) : ?>
+                <div class="post-preview">
 
-    <div class="body-content">
+                    <?php echo Html::a($item->name,['/post/view-post','slug'=>$item->slug], ['class'=>'post-title']);?>
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                    <!--                <a href="post.html">-->
+                    <!--                    <h2 class="post-title">-->
+                    <!--                        --><?php //echo $item->name; ?>
+                    <!--                    </h2>-->
+                    <h3 class="post-subtitle">
+                        <?php echo $item->desc; ?>
+                    </h3>
+                    <!--                </a>-->
+                    <p class="post-meta">Posted by <a href="https://www.facebook.com/quannntien">Quan Tien</a> <?php echo ' on '.date('d-m-Y',$item->created_at);?> </p>
+                </div>
+                <hr>
+            <?php endforeach; ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+            <?php endif; ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
         </div>
-
     </div>
 </div>
+
+<hr>

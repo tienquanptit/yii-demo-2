@@ -155,4 +155,9 @@ class PostController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionViewPost($slug){
+        $model = Post::findOne(['slug'=>$slug]);
+        return $this->render('view-post',['model'=>$model]);
+    }
 }
